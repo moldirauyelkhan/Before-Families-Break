@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before Families Break | AI, social workers and Kazakhstan's social orphans</title>
+<meta name="description" content="Can AI help Kazakhstan's child protection move from firefighting to prevention? A PLS 419 project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   Concept: one night in a Karagandy panel block, ending at morning.
+   The hero is night; each section is a little later; the verdict is day.
+   Every window is about 100 children. Lit windows live with a family.
+   ===================================================================== */
+:root{
+  --night:#1c2130; --night-2:#262c3e;
+  --lamp:#f2c46b; --lamp-2:#f6d590; --lamp-3:#e9b04f;
+  --dark-window:#2c3142; --concrete:#8b8073; --concrete-d:#6f655a;
+  --madder:#8e2f2a; --espresso:#2b211b; --oat:#efe3cf;
+  --card:#fbf7f0; --card-line:#e2d5c1; --card-ink:#2a211b; --card-ink-2:#6a5d50;
+  --s-guard:#3a5fa8; --s-inst:#c0552f; --s-foster:#2f8f6a;
+  --bg:#d9d0c7; --ink:#2a211b; --ink-2:#5b4d40; --accent:#7a4a3a; --rule:#c4b6a6;
+  --display:"Unbounded","Arial Rounded MT Bold",system-ui,sans-serif;
+  --serif:"Literata",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+body[data-mood="night"]  {--bg:#121a2e;--ink:#efe8db;--ink-2:#b4b8cc;--accent:#f2c46b;--rule:#2c3756}
+body[data-mood="dusk"]   {--bg:#17223d;--ink:#efe8db;--ink-2:#b6bbd0;--accent:#f2c46b;--rule:#2f3c60}
+body[data-mood="late"]   {--bg:#1f2b4f;--ink:#efe8db;--ink-2:#bcc0d6;--accent:#f4c97a;--rule:#36446e}
+body[data-mood="early"]  {--bg:#33305e;--ink:#f1e9de;--ink-2:#c9c2dc;--accent:#f6c58a;--rule:#4a4578}
+body[data-mood="first"]  {--bg:#f0cdbd;--ink:#2a211b;--ink-2:#5e4a45;--accent:#9a4a3a;--rule:#dfb3a0}
+body[data-mood="morning"]{--bg:#f6dcb8;--ink:#2a211b;--ink-2:#5b4d40;--accent:#99601f;--rule:#e4c49a}
+body[data-mood="day"]    {--bg:#f9e7b8;--ink:#2a211b;--ink-2:#5b4d40;--accent:#a35f1a;--rule:#e6cc8e}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.72;
+  transition:background-color 1.4s ease,color 1.4s ease}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+/* ---------- nav ---------- */
+nav.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);transition:background-color 1.4s}
+nav.top ul{list-style:none;margin:0 auto;padding:12px 18px;display:flex;gap:6px 26px;flex-wrap:wrap;justify-content:center;max-width:1180px}
+nav.top a{font-family:var(--display);font-weight:300;font-size:13px;text-decoration:none;color:var(--ink-2)}
+nav.top a.on{color:var(--ink);font-weight:500}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--display);font-weight:500;letter-spacing:-.015em;line-height:1.12}
+h2{font-size:clamp(28px,3.6vw,42px);margin:0 0 22px;max-width:18ch}
+h3{font-size:22px;margin:52px 0 12px;line-height:1.3}
+p{margin:0 0 1.1em}
+.lede{font-size:20px;line-height:1.6;color:var(--ink-2)}
+.chap{font-family:var(--display);font-weight:300;font-size:15px;color:var(--accent);margin:0 0 14px}
+.cite{font-size:14px;font-style:italic;color:var(--ink-2)}
+.cite a{color:inherit}
+.ours{font-style:italic;font-size:14px;color:var(--ink-2);border-bottom:1px dotted currentColor;white-space:nowrap}
+
+/* ---------- layout ---------- */
+.wrap{max-width:700px;margin:0 auto;padding:0 24px}
+.wide{max-width:1180px;margin:0 auto;padding:0 24px}
+section.chapter{padding:110px 0 50px}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.split .sticky{position:sticky;top:90px}
+@media (max-width:900px){.split{grid-template-columns:1fr;gap:20px}.split .sticky{position:static}}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:center;padding:60px 24px 40px;max-width:1240px;margin:0 auto}
+.hero h1{font-size:clamp(38px,5.2vw,66px);font-weight:700;line-height:1.02;margin:0 0 26px;color:var(--ink)}
+.hero .sub2{font-family:var(--display);font-weight:300;font-size:clamp(17px,1.6vw,20px);color:var(--lamp);margin:-14px 0 26px}
+.hero .stat{font-family:var(--display);font-weight:300;font-size:clamp(20px,2.2vw,26px);line-height:1.4;color:var(--ink);margin:0 0 18px}
+.hero .stat strong{font-weight:700;color:var(--lamp)}
+.hero .q{color:var(--ink-2);font-size:20px;max-width:30ch}
+.hero .key{display:flex;gap:18px;flex-wrap:wrap;font-size:15px;color:var(--ink-2);margin-top:26px}
+.hero .key i{display:inline-block;width:12px;height:14px;border-radius:2px;margin-right:7px;vertical-align:-2px}
+.hero .by{font-family:var(--display);font-weight:300;font-size:13px;color:var(--ink-2);margin-top:34px}
+.blocks svg{width:100%;height:auto;display:block}
+@media (max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:40px}}
+
+/* ---------- figures (quiet) ---------- */
+.fig{background:var(--card);color:var(--card-ink);border:1px solid var(--card-line);border-radius:6px;padding:26px 26px 20px;margin:30px 0}
+.fig h4{font-weight:500;font-size:19px;margin:0 0 6px;line-height:1.3}
+.fig .fsub{font-size:15.5px;color:var(--card-ink-2);margin:0 0 16px;line-height:1.5}
+.fig .fsrc{font-size:13.5px;font-style:italic;color:var(--card-ink-2);margin-top:14px;line-height:1.5}
+.fig .fsrc a{color:inherit}
+.fig details{font-size:14px;margin-top:10px;color:var(--card-ink-2)}
+.fig table{border-collapse:collapse;margin-top:8px;font-size:14px;font-variant-numeric:tabular-nums}
+.fig td,.fig th{border-bottom:1px solid var(--card-line);padding:4px 14px 4px 0;text-align:left}
+.legend{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:14px;margin:12px 0 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+/* toddlers */
+.picto{display:flex;flex-wrap:wrap;gap:3px}
+.picto b{width:9px;height:9px;border-radius:50%;background:var(--card-ink);opacity:.8}
+.picto b.new{background:var(--s-inst);opacity:1}
+.picto-row{margin:8px 0 16px}
+.picto-row .lab{font-size:14px;color:var(--card-ink-2);margin-bottom:6px}
+
+/* bars */
+.hbar{display:grid;grid-template-columns:120px 1fr 64px;align-items:center;gap:12px;margin:10px 0;font-size:15px}
+.hbar .b{height:14px;background:#efe6d8;border-radius:0 4px 4px 0;position:relative}
+.hbar .b span{position:absolute;left:0;top:0;bottom:0;background:var(--card-ink);border-radius:0 4px 4px 0;width:0;transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.hbar .b span.range{background:repeating-linear-gradient(45deg,var(--card-ink) 0 4px,#8a7d70 4px 8px)}
+.hbar .v{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--display);font-weight:500;font-size:15px}
+
+/* line chart */
+.chart{position:relative}
+.chart svg{width:100%;height:auto;display:block;overflow:visible}
+.chart .tip{position:absolute;pointer-events:none;background:var(--espresso);color:#f6efe4;font-size:13px;padding:8px 11px;border-radius:5px;opacity:0;transition:opacity .15s;white-space:nowrap;line-height:1.5}
+.axis text{font-family:var(--serif);font-size:12px;fill:#7a6c5d}
+.grid line{stroke:#eee4d6}
+
+/* ---------- espresso band ---------- */
+.band{background:#0c1222;color:#f1e7d8;padding:96px 0;margin:70px 0}
+.band a{color:var(--lamp)}
+.band .quote{font-family:var(--display);font-weight:300;font-size:clamp(24px,3.2vw,38px);line-height:1.25;margin:0 0 20px;max-width:24ch}
+.band .quote b{font-weight:700;color:var(--lamp)}
+.band .who{color:#b6bbd0;font-size:16px;max-width:52ch}
+.toggle{display:inline-flex;flex-wrap:wrap;gap:6px;margin:34px 0 26px}
+.toggle button{font-family:var(--display);font-weight:300;font-size:14px;border:1px solid #3a4870;background:transparent;color:#d7cab8;padding:9px 16px;border-radius:999px;cursor:pointer}
+.toggle button[aria-pressed="true"]{background:var(--lamp);border-color:var(--lamp);color:var(--espresso);font-weight:500}
+.kids{display:flex;flex-wrap:wrap;gap:4px;max-width:720px;min-height:80px;margin:8px 0 6px}
+.kids b{width:12px;height:12px;border-radius:50%;background:#2f3a5c;transition:background-color .4s}
+.kids b.cov{background:var(--lamp)}
+.bigrow{display:flex;gap:56px;flex-wrap:wrap;margin-top:22px}
+.big .n{font-family:var(--display);font-weight:700;font-size:clamp(38px,4.6vw,58px);line-height:1;color:#f6efe4;font-variant-numeric:tabular-nums}
+.big .l{font-size:15px;color:#b6bbd0;max-width:24ch;margin-top:8px;line-height:1.45}
+.band .note{font-size:14px;font-style:italic;color:#9aa1bb;margin-top:26px;max-width:70ch}
+
+.question{font-family:var(--display);font-weight:300;font-size:clamp(18px,1.9vw,22px);line-height:1.55;margin:60px 0 14px;padding-left:22px;border-left:4px solid #c4574a}
+
+/* ---------- data silences: case file ---------- */
+.file{background:#f4ead9;color:var(--card-ink);border:1px solid var(--card-line);border-radius:0 6px 6px 6px;padding:28px 30px;position:relative;margin:56px 0 30px}
+.file .ftab{position:absolute;top:-30px;left:26px;background:#f4ead9;border:1px solid var(--card-line);border-bottom:0;border-radius:6px 6px 0 0;
+  padding:6px 16px 7px;font-family:var(--display);font-weight:300;font-size:12.5px;color:var(--card-ink-2);white-space:nowrap}
+.silences{list-style:none;padding:0;margin:0}
+.silences li{padding:14px 0;border-top:1px dashed #d8c7ac}
+.silences li:first-child{border-top:0}
+.silences strong{font-family:var(--display);font-weight:500;font-size:17px;display:block;margin-bottom:6px}
+.redact{background:var(--espresso);color:transparent;border-radius:2px;cursor:pointer;transition:background-color .7s,color .7s;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 2px;font-size:16.5px;line-height:1.7}
+.redact.open{background:transparent;color:var(--card-ink-2)}
+.hint{font-size:15px;font-style:italic;color:var(--ink-2)}
+.measures{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border-top:2px solid var(--ink);margin:24px 0}
+.measures div{padding:16px 18px 16px 0;border-bottom:1px solid var(--rule);font-size:16px;line-height:1.5}
+.measures b{font-family:var(--display);font-weight:500;font-size:15px;display:block;margin-bottom:4px}
+.measures span{color:var(--ink-2)}
+
+/* ---------- research crossroads ---------- */
+.venn svg{width:100%;max-width:520px;display:block;margin:0 auto}
+.venn .c{cursor:pointer;transition:fill-opacity .3s}
+.venn .c:hover,.venn .c.on{fill-opacity:.75}
+.venn .c:focus{outline:none}
+.venn .c:focus-visible{stroke-width:4}
+.venn{color:var(--ink)}
+.venn text{font-family:var(--display);pointer-events:none}
+.rpanel{min-height:260px}
+.rpanel h4{font-size:20px;margin:0 0 10px}
+.rpanel dl{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;font-size:16px;margin:16px 0 0}
+.rpanel dt{font-family:var(--display);font-weight:500;font-size:13px;color:var(--accent);padding-top:3px}
+.rpanel dd{margin:0}
+
+/* ---------- visit journey ---------- */
+.journey{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:26px 0;position:relative}
+.journey .st{padding:16px 16px 18px;border-left:1px solid var(--card-line);font-size:15.5px;line-height:1.45}
+.journey .st svg{width:38px;height:38px;display:block;margin-bottom:10px}
+.journey .st b{font-family:var(--display);font-weight:500;font-size:14px;display:block;margin-bottom:4px}
+.journey .st.hl{background:#f2e3c8}
+.journey .st.no b{color:var(--madder)}
+@media (max-width:760px){.journey{grid-template-columns:1fr 1fr}}
+
+.slider{margin:18px 0 6px}
+.slider label{display:flex;justify-content:space-between;font-size:15px}
+.slider label span:last-child{font-family:var(--display);font-weight:500}
+input[type=range]{width:100%;accent-color:#8f652b;margin-top:8px}
+.statrow{display:flex;gap:40px;flex-wrap:wrap;margin:22px 0 4px}
+.statrow .n{font-family:var(--display);font-weight:700;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.statrow .l{font-size:14.5px;color:var(--card-ink-2);max-width:22ch;margin-top:6px;line-height:1.4}
+
+/* ---------- the bill: a receipt ---------- */
+.receipt{background:#fffdf8;color:#2a211b;max-width:640px;margin:34px auto;padding:34px 34px 30px;position:relative;
+  filter:drop-shadow(0 18px 26px rgba(60,40,20,.18));font-family:var(--mono);font-size:14.5px;line-height:1.6;
+  --zz:radial-gradient(circle at 10px 0,transparent 9px,#fffdf8 9.5px);}
+.receipt::before,.receipt::after{content:"";position:absolute;left:0;right:0;height:12px;background-size:20px 12px;background-repeat:repeat-x}
+.receipt::before{top:-12px;background-image:radial-gradient(circle at 10px 12px,#fffdf8 9px,transparent 9.5px)}
+.receipt::after{bottom:-12px;background-image:radial-gradient(circle at 10px 0,#fffdf8 9px,transparent 9.5px)}
+.receipt .rh{text-align:center;border-bottom:1px dashed #b9a98f;padding-bottom:16px;margin-bottom:8px}
+.receipt .rh b{font-size:17px;letter-spacing:.06em;display:block}
+.receipt details{border-bottom:1px dashed #d8cbb5}
+.receipt summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 0}
+.receipt summary::-webkit-details-marker{display:none}
+.receipt summary .item{font-weight:600}
+.receipt summary .item::before{content:"+ ";color:#a08c70}
+.receipt details[open] summary .item::before{content:"− "}
+.receipt summary .wt{letter-spacing:2px;color:#8e2f2a;font-weight:600}
+.receipt summary .one{grid-column:1/-1;font-family:var(--serif);font-size:15px;color:#6a5d50}
+.receipt .rb{font-family:var(--serif);font-size:16.5px;line-height:1.65;padding:4px 0 18px}
+.receipt .rb p{margin:0 0 .9em}
+.receipt .total{display:grid;grid-template-columns:1fr auto;padding:16px 0 4px;font-weight:600;font-size:15.5px;border-top:2px solid #2a211b;margin-top:6px}
+.receipt .foot{text-align:center;color:#8a7a66;font-size:13px;margin-top:14px}
+.layers{margin:14px 0;display:grid;gap:6px}
+.layers div{padding:11px 14px;border-left:4px solid #8f652b;background:#f6eedf;font-size:15.5px;line-height:1.5}
+.layers b{font-family:var(--display);font-weight:500;font-size:14px}
+.envcalc{background:#f6eedf;padding:16px 18px;border-radius:4px;margin:12px 0}
+.envcalc .statrow .n{font-size:32px}
+
+/* ---------- verdict ---------- */
+.vhead{font-family:var(--display);font-weight:700;font-size:clamp(28px,3.6vw,46px);line-height:1.1;margin:0 0 24px;max-width:16ch}
+.conds{display:grid;gap:10px;margin:22px 0}
+.cond{display:grid;grid-template-columns:auto 1fr;gap:14px;background:var(--card);border:1px solid var(--card-line);border-radius:6px;padding:15px 18px;cursor:pointer;transition:border-color .3s,background-color .3s}
+.cond input{width:21px;height:21px;accent-color:#8f652b;margin-top:4px}
+.cond b{font-family:var(--display);font-weight:500;font-size:16px;display:block;margin-bottom:2px}
+.cond span{font-size:15px;color:var(--card-ink-2);display:block;line-height:1.5}
+.cond small{font-size:13px;font-style:italic;color:#8f652b}
+.cond.off{border-color:var(--madder);background:#f8ebe6}
+.vstage{position:relative}
+.stamp{position:absolute;right:6%;top:8%;font-family:var(--display);font-weight:700;font-size:clamp(18px,2.4vw,28px);
+  color:#2f6b45;border:4px solid currentColor;border-radius:8px;padding:8px 16px;transform:rotate(-8deg);background:rgba(255,253,248,.82);
+  text-align:center;line-height:1.15;transition:color .4s}
+.stamp small{display:block;font-weight:300;font-size:.48em;margin-top:3px}
+.stamp.no{color:var(--madder)}
+@keyframes thump{0%{transform:rotate(-8deg) scale(1.5);opacity:0}60%{transform:rotate(-8deg) scale(.95);opacity:1}100%{transform:rotate(-8deg) scale(1)}}
+.stamp.hit{animation:thump .45s ease-out}
+
+
+
+/* region ranking */
+#regions .rrow{display:grid;grid-template-columns:150px 1fr 48px;gap:10px;align-items:center;margin:5px 0;font-size:14.5px;cursor:default}
+#regions .rb{height:16px;background:#f1e8da;border-radius:0 4px 4px 0;position:relative}
+#regions .rb span{position:absolute;inset:0 auto 0 0;border-radius:0 4px 4px 0;background:#cdbfa8;width:0;transition:width 1s cubic-bezier(.2,.7,.2,1)}
+#regions .rrow.pilot .rb span{background:#8f652b}
+#regions .rrow.comp .rb span{background:#3a5fa8}
+#regions .rrow.pilot,#regions .rrow.comp{font-weight:600}
+#regions .rv{text-align:right;font-family:var(--display);font-weight:500;font-size:14px;font-variant-numeric:tabular-nums}
+#regions .rrow:hover .rb{outline:1px solid #2a211b}
+#regions .rtip{font-size:13.5px;color:var(--card-ink-2);min-height:22px;margin-top:8px;font-style:italic}
+@media (max-width:560px){#regions .rrow{grid-template-columns:110px 1fr 40px;font-size:13px}}
+/* ---------- end matter ---------- */
+.endmatter{padding-top:40px;margin-top:60px;border-top:1px solid var(--rule)}
+.endmatter h3{font-size:20px;margin:0 0 10px}
+.ai{background:var(--card);color:var(--card-ink);border:1px solid var(--card-line);border-radius:6px;padding:26px 28px;margin:20px 0 50px}
+.aiintro{font-size:15.5px;color:var(--card-ink-2);margin:0 0 18px}
+.aicols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.aicols h4{font-weight:500;font-size:15px;margin:0 0 8px;padding-bottom:6px;border-bottom:2px solid #c08a3e}
+.aicols div:last-child h4{border-color:#3a5fa8}
+.aicols ul{margin:0;padding-left:18px;font-size:15px;line-height:1.55}
+.aicols li{margin-bottom:5px}
+.aiwide{margin-top:26px;border-top:1px solid var(--card-line);padding-top:18px}
+.aiwide h4{font-weight:500;font-size:15px;margin:0 0 8px}
+.aiwide h4+ul+h4{margin-top:18px}
+.aiwide ul{margin:0;padding-left:18px;font-size:15px;line-height:1.55}
+.aiwide li{margin-bottom:6px}
+.aiwide b{font-weight:600}
+.ainote{font-size:13.5px;font-style:italic;color:var(--card-ink-2);margin:18px 0 0}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.sgroup h4{font-weight:500;font-size:14px;margin:0 0 8px;color:var(--accent)}
+.sgroup ol{margin:0;padding-left:22px;font-size:13.5px;line-height:1.5;color:var(--ink-2)}
+.sgroup li{margin-bottom:7px}
+.sgroup a{color:var(--ink)}
+@media (max-width:900px){.sgrid,.aicols{grid-template-columns:1fr}}
+footer{padding:50px 0 90px;text-align:center;font-family:var(--display);font-weight:300;font-size:13px;color:var(--ink-2)}
+
+/* objections */
+.obj{border-left:3px solid var(--madder);padding:2px 0 2px 22px;margin:38px 0 30px}
+.obj .q{font-family:var(--display);font-weight:500;font-size:clamp(18px,2vw,21px);line-height:1.3;margin:0 0 4px}
+.obj .who{font-size:13.5px;font-style:italic;opacity:.72;margin:0 0 12px}
+.obj ul{margin:8px 0 0;padding-left:20px}.obj li{margin:4px 0}
+.chain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:6px}
+.chain .lk{position:relative;padding:13px 12px;border:1px solid var(--card-line);border-radius:6px;margin-right:20px;background:#fffdf8}
+.chain .lk:last-child{margin-right:0}
+.chain .lk:not(:last-child)::after{content:'';position:absolute;right:-16px;top:50%;width:10px;height:10px;border-top:2px solid var(--card-ink-2);border-right:2px solid var(--card-ink-2);transform:translateY(-50%) rotate(45deg)}
+.chain .lk b{display:block;font-family:var(--display);font-weight:500;font-size:14.5px;line-height:1.3;margin-bottom:8px}
+.chain .m{display:flex;gap:3px;margin:0 0 6px}
+.chain .m i{flex:1;height:6px;border-radius:3px;background:var(--card-line)}
+.chain .m i.on{background:var(--card-ink)}
+.chain .st{font-size:13px;font-weight:600;display:block;margin-bottom:6px}
+.chain p{font-size:13.5px;color:var(--card-ink-2);margin:0;line-height:1.45}
+.chain .lk.weak{border:1.5px dashed var(--madder);background:#fbefe9}
+.chain .lk.weak .st{color:var(--madder)}
+.reach{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.reach>div{border-top:5px solid var(--c);padding-top:10px}
+.reach b{display:block;font-family:var(--display);font-weight:500;font-size:15px;margin-bottom:6px}
+.reach p{font-size:14px;color:var(--card-ink-2);margin:0;line-height:1.5}
+@media(max-width:760px){.chain,.reach{grid-template-columns:1fr}.chain .lk{margin:0 0 22px}.chain .lk:last-child{margin:0}
+ .chain .lk:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-17px;transform:translateX(-50%) rotate(135deg)}}
+</style>
+</head>
+<body data-mood="night">
+<nav class="top" aria-label="Sections">
+  <ul>
+    <li><a href="#problem">The problem</a></li>
+    <li><a href="#data">The data</a></li>
+    <li><a href="#research">The research</a></li>
+    <li><a href="#solution">The solution</a></li>
+    <li><a href="#bill">The bill</a></li>
+    <li><a href="#verdict">The verdict</a></li>
+  </ul>
+</nav>
+
+<!-- ============================ HERO ============================ -->
+<header class="hero" data-mood="night" data-time="23:40">
+  <div>
+    <h1>Before Families Break</h1>
+    <p class="sub2">AI, social workers and Kazakhstan's social orphans</p>
+    <p class="stat">In 2023, <strong>21,387</strong> children in Kazakhstan lived without parental care. Most of their parents are alive.</p>
+    <p class="q">Can AI help child protection reach families before they break?</p>
+    <div class="key">
+      <span><i style="background:var(--lamp)"></i>With relatives or foster parents</span>
+      <span><i style="background:var(--dark-window);outline:1px solid #4a5068"></i>In an institution</span>
+    </div>
+    <p class="key" style="margin-top:8px">Each window is about 100 children.</p>
+    <div class="by">A PLS 419 project by Moldir, with Claude</div>
+  </div>
+  <div class="blocks" id="heroBlocks"></div>
+</header>
+
+<!-- ============================ 1. PROBLEM ============================ -->
+<section class="chapter" id="problem" data-mood="dusk" data-time="01:00">
+<div class="wide split">
+  <div class="sticky">
+    <p class="chap">1. The problem</p>
+    <h2>Why did these children lose their first family?</h2>
+  </div>
+  <div>
+    <p class="lede">In the new documentary <a href="https://www.youtube.com/watch?v=Vd_5k_UUtLo"><em>There Are Many of Us</em></a> (Balgabayev Doc, 2026), ordinary Kazakhstani families talk about adopting and fostering: their fear of "bad genes," the opinions of relatives, the first months when a child tests every boundary. It is a film about finding children new families. This project asks the question that comes before it.</p>
+    <p>In 2023, Kazakhstan counted 21,387 orphans and children left without parental care <span class="cite">(Bureau of National Statistics, cited in <a href="https://cabar.asia/en/the-present-and-future-of-social-orphans-in-kazakhstan">Mussabalinova, CABAR</a>)</span>. Most are not orphans in the usual sense. They are "social orphans": children whose parents are alive. An earlier analysis found that 82.4% of children in institutions had living parents <span class="cite">(<a href="https://cabar.asia/?p=34090">CABAR, c. 2020</a>)</span>. Nearly three quarters (73%) live under guardianship, mostly with relatives; 17% live in institutions; 8% are in foster families.</p>
+    <p>At first glance, the trend looks good. The number of children without parental care fell from about 24,200 in 2019 to 21,400 at the start of 2024 <span class="cite">(<a href="https://bizmedia.kz/2024-10-01-v-kazahstane-kolichestvo-detej-v-detskih-domah-silno-vyroslo">Bizmedia</a>)</span>, and the film cites 20,798 by official data. But the decline hides a harder picture. The number of children moving from institutions into families halved between 2015 and 2024, from 2,600 to 1,200. Some placements fail: in 2024, 235 children were returned to state institutions, 164 of them after guardians gave up <span class="cite">(<a href="https://inbusiness.kz/ru/last/v-kazahstane-rezko-sokratilos-chislo-usynovlenij">Inbusiness, citing statistics bureau data via Finprom</a>)</span>. And every year the state takes parental rights from more than a thousand parents: more than 1,126 in 2025 <span class="cite">(<a href="https://newtimes.kz/obshchestvo/217663-neuplata-alimentov-i-nasilie-za-chto-lishaiut-roditelskikh-prav-v-kazakhstane">NewTimes.kz</a>)</span>.</p>
+
+    <figure class="fig" aria-labelledby="f2t">
+      <h4 id="f2t">The youngest are arriving faster</h4>
+      <p class="fsub">Children under four admitted to baby homes. Each dot is about 10 children; red dots are the increase.</p>
+      <div class="picto-row"><div class="lab">2022: 831 children</div><div class="picto" id="pic22"></div></div>
+      <div class="picto-row"><div class="lab">2023: about 1,300 children, 54% more</div><div class="picto" id="pic23"></div></div>
+      <div class="fsrc">Bureau of National Statistics, via <a href="https://bizmedia.kz/2024-10-01-v-kazahstane-kolichestvo-detej-v-detskih-domah-silno-vyroslo">Bizmedia, 1 Oct 2024</a>. 2023 drawn as 831 × 1.543 ≈ 1,282.</div>
+    </figure>
+  </div>
+</div>
+
+<div class="band" data-mood="dusk">
+  <div class="wide">
+    <p class="quote">Work with struggling families is <b>firefighting</b>: authorities step in only once a situation is already critical.</p>
+    <p class="who">Aigerim Mussabalinova, KIMEP University, describing a 2025 study <span class="cite" style="color:#9aa1bb">(<a href="https://cabar.asia/en/the-present-and-future-of-social-orphans-in-kazakhstan">CABAR</a>)</span>. The reasons families reach that point are ordinary: divorce, a parent's or child's illness, domestic violence. Yet the people who should catch these families early are very few.</p>
+
+    <div class="toggle" role="group" aria-label="Number of guardianship specialists">
+      <button aria-pressed="false" data-staff="303">Before 2025: 303 specialists</button>
+      <button aria-pressed="true" data-staff="692">Now: 692</button>
+      <button aria-pressed="false" data-staff="1380">The state's own standard: 1,380</button>
+    </div>
+    <div class="kids" id="kids" role="img" aria-label="100 dots, each about 100 children; lit dots show how many children one specialist could cover at 1 per 5,000"></div>
+    <div class="bigrow">
+      <div class="big"><div class="n" id="perSpec">9,971</div><div class="l">children for every guardianship specialist</div></div>
+      <div class="big"><div class="n" id="gapSpec">688</div><div class="l">posts still missing to reach the standard of one per 5,000</div></div>
+    </div>
+    <p class="note">Each dot is 100 children that one specialist answers for. Lit dots are the 5,000 the government's own standard allows; every dark dot is beyond it. 6.9 million children (<a href="https://en.tengrinews.kz/kazakhstan_news/Nearly-7-million-children-live-in-Kazakhstan-268149/">Tengrinews</a>) ÷ specialists, our calculation. Staffing from <a href="https://cabar.asia/en/the-present-and-future-of-social-orphans-in-kazakhstan">CABAR</a>; the ministry calls the rise "2.5 times," but 303 to 692 is 2.3 times.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <p>The state does not even keep separate statistics on children removed from their families in emergencies. That admission came from Nasymzhan Ospanova, chair of the Committee for the Protection of Children's Rights <span class="cite">(<a href="https://newtimes.kz/obshchestvo/217663-neuplata-alimentov-i-nasilie-za-chto-lishaiut-roditelskikh-prav-v-kazakhstane">NewTimes.kz</a>)</span>.</p>
+  <p><strong>Who carries the cost?</strong> First, the children, especially those hardest to place: teenagers, children with disabilities, and siblings who must stay together. Second, families in crisis who get help only when it is too late to keep them together. Third, the social workers themselves, who have time only for emergencies.</p>
+  <p class="question">Kazakhstan has built new laws and new family forms to find children new homes. But the system for keeping children in their first homes runs on very few people with very little time. Why does child protection act only after a family breaks, and who pays for that delay?</p>
+  <p class="hint">This is a question about institutions, not technology: about how a state spends its scarce attention.</p>
+</div>
+</section>
+
+<!-- ============================ 2. DATA ============================ -->
+<section class="chapter" id="data" data-mood="late" data-time="03:00">
+<div class="wrap">
+  <p class="chap">2. Background and data</p>
+  <h2>Counted only after the fact</h2>
+  <p class="lede">Kazakhstan counts children who have lost families fairly well, but it barely counts the families who are about to lose them, which is exactly where prevention would work.</p>
+  <div class="measures">
+    <div><b><a href="https://bala.stat.gov.kz/en/publications/">Statistics bureau</a></b><span>Children without parental care, in institutions, in guardianship and foster care. The long official series our figure uses.</span></div>
+    <div><b>Ministry of Education</b><span>Family placements, guardianship staffing, new professional foster families. Mostly in press releases.</span></div>
+    <div><b>Prosecutor General</b><span>3,392 offences against minors in 2025. The violent end of the spectrum, not ordinary family crisis.</span></div>
+    <div><b>Researchers and NGOs</b><span>KIMEP, Family Academy, ANA UYI. The only window into how prevention works on the ground.</span></div>
+  </div>
+
+  <figure class="fig" aria-labelledby="f4t">
+    <h4 id="f4t">After a decade of decline, new cases are rising again</h4>
+    <p class="fsub">Children admitted to organisations for orphans and children without parental care, 2013–2023. Hover or tap for values.</p>
+    <div class="chart" id="lineChart"></div>
+    <div class="legend">
+      <span><i style="background:var(--s-guard)"></i>All admissions</span>
+      <span><i style="background:var(--s-inst)"></i>Newly identified children</span>
+    </div>
+    <details><summary>View as a table</summary><table id="lineTable"></table></details>
+    <div class="fsrc">Our own figure, from the Bureau of National Statistics table <a href="https://bala.stat.gov.kz/en/dvizhenie-vospitannikov-organizatsij-dlya-detej-sirot-i-detej-ostavshihsya-bez-popecheniya-roditelej/">"Children in Organizations for Orphans and Children without Parental Care."</a> Newly identified children rose 42% from 2022 to 2023 (our calculation).</div>
+  </figure>
+
+  <p>The headline numbers point the right way: fewer children without parental care, and most now live in families rather than institutions. But the flow out of institutions slowed, with placements into families halving from 2,600 in 2015 to 1,200 in 2024 <span class="cite">(<a href="https://inbusiness.kz/ru/last/v-kazahstane-rezko-sokratilos-chislo-usynovlenij">Inbusiness</a>)</span>. And in 2023 the long fall in new cases reversed.</p>
+
+  <figure class="fig" aria-labelledby="f5t">
+    <h4 id="f5t">210 children came back in one year</h4>
+    <p class="fsub">Children admitted to institutions in 2023 after a family placement was cancelled.</p>
+    <div class="hbar"><span>Guardianship</span><div class="b"><span data-w="68.6"></span></div><span class="v">144</span></div>
+    <div class="hbar"><span>Patronage</span><div class="b"><span data-w="25.2"></span></div><span class="v">53</span></div>
+    <div class="hbar"><span>Adoption</span><div class="b"><span data-w="6.2"></span></div><span class="v">13</span></div>
+    <div class="fsrc">Bureau of National Statistics, same table; total 210 (our calculation). For 2024, Inbusiness reports 235.</div>
+  </figure>
+
+  <h3>Where the data goes silent</h3>
+  <p class="hint">Tap a blacked-out line to read what is missing.</p>
+  <div class="file">
+    <span class="ftab">Case file: what is not counted</span>
+    <ul class="silences">
+      <li><strong>No count of emergency removals</strong><span class="redact" tabindex="0" role="button">Kazakhstan keeps no separate statistics on children removed from their families when their life or health is threatened. The most consequential decision in the system is the least measured.</span></li>
+      <li><strong>No data on prevention work itself</strong><span class="redact" tabindex="0" role="button">There are no public figures on how many struggling families are visited, how often, or for how long, nor on caseloads or paperwork time. Removal decisions are often based on police information rather than a social worker's assessment, because there are too few social workers (CABAR, c. 2020).</span></li>
+      <li><strong>Totals that do not agree</strong><span class="redact" tabindex="0" role="button">The same population appears as 21,387 (2023), 21,400 (start of 2024) and 20,798 (2025), and the 2023 breakdown leaves 332 children unaccounted for. Definitions and reporting dates shift between sources.</span></li>
+      <li><strong>We know how many placements fail, not why</strong><span class="redact" tabindex="0" role="button">The bureau publishes how many children return after a cancelled guardianship, patronage or adoption. Nothing is published on what support the family had, or who checked on them before it broke.</span></li>
+      <li><strong>Who falls through</strong><span class="redact" tabindex="0" role="button">Children whom relatives take in informally, and families who struggle but never reach the police, are invisible in every dataset.</span></li>
+    </ul>
+  </div>
+  <p><strong>How far can we trust the numbers?</strong> Counts of children already in the system are reasonably reliable, and the bureau publishes them by year. Almost nothing is measured about the months before a child enters it: no visits, no caseloads, no emergency removals. The data is strongest exactly where it is least useful for prevention.</p>
+</div>
+</section>
+
+<!-- ============================ 3. RESEARCH ============================ -->
+<section class="chapter" id="research" data-mood="early" data-time="05:00">
+<div class="wide">
+  <div class="wrap" style="padding:0;margin:0 0 20px">
+    <p class="chap">3. Current state of research</p>
+    <h2>Four conversations that rarely meet</h2>
+    <p class="lede">Four bodies of research touch this problem and rarely cite each other. This project sits in the space between them. Choose a circle.</p>
+  </div>
+  <div class="split" style="grid-template-columns:minmax(0,6fr) minmax(0,6fr);align-items:center">
+    <div class="venn" id="venn"></div>
+    <div class="rpanel" id="rpanel" aria-live="polite"></div>
+  </div>
+</div>
+</section>
+
+<!-- ============================ 4. SOLUTION ============================ -->
+<section class="chapter" id="solution" data-mood="first" data-time="06:30">
+<div class="wrap">
+  <p class="chap">4. The AI-assisted solution</p>
+  <h2>The case-note assistant</h2>
+  <p class="lede">A Kazakh–Russian AI scribe for guardianship specialists that cuts paperwork and, by rule, turns the saved hours into early visits to struggling families. The AI never assesses, scores or decides anything about a child.</p>
+</div>
+<div class="wide">
+  <div class="fig" style="padding:22px 4px 10px">
+    <h4 style="padding:0 20px">One home visit, step by step</h4>
+    <div class="journey" id="journey"></div>
+  </div>
+</div>
+<div class="wrap">
+  <p><strong>Who runs it.</strong> The Ministry of Education's guardianship bodies own it. The speech model is built on Kazakhstan's open speech corpora (ISSAI, Nazarbayev University), and all audio and text stay on servers in Kazakhstan.</p>
+  <p><strong>Who it reaches first.</strong> A one-year pilot in Karaganda region, compared with Kostanay region, which does not get the tool. The choice follows the data. In 2023 Karaganda had more children in institutions than any other region (461), and one of the highest rates for its child population. Kostanay has a similar rate and a similar Soviet-era institutional legacy, which makes it a fair comparison. Karaganda also has the most institutions of any region (8), and regions with more institutions may simply place more children in them. That is a further sign that the problem is the system's structure, not only families.</p>
+
+  <figure class="fig" aria-labelledby="f9t">
+    <h4 id="f9t">Where children are most likely to grow up in an institution</h4>
+    <p class="fsub">Children in institutions per 10,000 children, by region, 2023. Hover or tap a bar for the counts.</p>
+    <div id="regions"></div>
+    <div class="legend"><span><i style="background:#8f652b"></i>Pilot region</span><span><i style="background:#3a5fa8"></i>Comparison region</span><span><i style="background:#cdbfa8"></i>Other regions</span></div>
+    <details><summary>View as a table</summary><table id="regTable"></table></details>
+    <div class="fsrc">Children in institutions: Bureau of National Statistics, <a href="https://bala.stat.gov.kz/category/sotsialnaya-zaschita-detej/">children's social protection tables</a>, 2023. Child population on 1 January 2024: Bureau of National Statistics via <a href="https://www.lada.kz/kazakhstan-news/123857-v-kakikh-regionakh-kazakhstana-bolshe-vsego-detei.html">Lada.kz</a>. Rates are our calculation. Mangystau and Pavlodar are reported together; Abai, Akmola and East Kazakhstan are not in the source table. The listed regions add up to 3,434 of the national 3,727.</div>
+  </figure>
+  <p class="cite">One limit: the pilot and comparison regions are both largely Russian-speaking, so a second phase should add a mostly Kazakh-speaking southern region to test condition 4 fully.</p>
+
+  <h3>Where this already runs</h3>
+  <figure class="fig" aria-labelledby="f7t">
+    <h4 id="f7t">Admin time saved by UK councils using Magic Notes</h4>
+    <p class="fsub">Mostly self-reported by councils or the vendor; mostly adult social care. Somerset is the children's services pilot.</p>
+    <div class="hbar"><span>Ealing</span><div class="b"><span data-w="44"></span></div><span class="v">44%</span></div>
+    <div class="hbar"><span>Somerset</span><div class="b"><span data-w="46"></span></div><span class="v">46%</span></div>
+    <div class="hbar"><span>Kingston</span><div class="b"><span class="range" data-w="60"></span></div><span class="v">50–60%</span></div>
+    <div class="hbar"><span>Swindon</span><div class="b"><span data-w="63"></span></div><span class="v">63%</span></div>
+    <div class="fsrc">Somerset: 20 children's social care staff, about 11 hours a week saved, reports 65% faster (<a href="https://workplacejournal.co.uk/2025/09/somerset-council-rolls-out-ai-to-cut-admin-for-social-workers/">Workplace Journal</a>). Ealing: adult services; an independent evaluation found about 50% (<a href="https://www.aroundealing.com/?p=173399">Around Ealing</a>). Kingston: savings put into prevention services (<a href="https://www.local.gov.uk/case-studies/kingston-council-using-ai-adult-social-care-administration">LGA</a>). Swindon: 184 meetings (<a href="https://socitm.net/resource-hub/case-studies/ai-in-adult-social-care-swindon-borough-council/">Socitm</a>). St Helens also piloted it in children's social care (<a href="https://news.sthelens.gov.uk/article/14316/St-Helens-Borough-Council-rolls-out-innovative-AI-tool-to-450-frontline-staff">2025</a>).</div>
+  </figure>
+  <p>All of these are English-language, mostly adult social care, and evaluated by councils or the vendor. Research behind several positive reports was commissioned by Beam itself, and experts still ask whether saved time goes to relationship-based work <span class="cite">(<a href="https://www.communitycare.co.uk/?p=215389">Community Care</a>)</span>. That is the honest limit of the evidence, and the reason to build independent evaluation into the Kazakh pilot.</p>
+
+  <div class="obj">
+    <p class="q">Has an AI scribe ever actually helped a family?</p>
+    <p class="who">An objection Moldir raised against her own project</p>
+    <p>Not that anyone has shown yet. Every case above measures hours saved and staff satisfaction, never what happened to the families. A systematic review found only eight empirical studies of AI-assisted case management worldwide (Li, Wang and Jian, 2025). The project rests on a chain of four steps, and only the first has been measured.</p>
+  </div>
+  <figure class="fig" aria-labelledby="f10t">
+    <h4 id="f10t">The chain this project depends on</h4>
+    <p class="fsub">How strong the evidence is for each step. Each step only matters if the one before it holds.</p>
+    <div class="chain">
+      <div class="lk"><b>The AI writes the case notes, so paperwork time falls</b><div class="m"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><span class="st">Measured, but self-reported</span><p>44–63% saved in UK councils, English only.</p></div>
+      <div class="lk weak"><b>The saved time becomes more family visits</b><div class="m"><i></i><i></i><i></i><i></i></div><span class="st">Not measured anywhere</span><p>Kingston put savings into prevention but published no visit counts.</p></div>
+      <div class="lk"><b>More visits mean families get help in time</b><div class="m"><i class="on"></i><i class="on"></i><i></i><i></i></div><span class="st">Some evidence, from the US</span><p>Lower caseloads are linked to better outcomes for children (<a href="https://www.pewtrusts.org/-/media/assets/2019/01/in_caseload_reduction_for_family_case_managers_hb1006.pdf">Pew, 2019</a>).</p></div>
+      <div class="lk"><b>Fewer children enter care, and they stay safe</b><div class="m"><i class="on"></i><i></i><i></i><i></i></div><span class="st">Mixed</span><p>Family-support trials often found no fall in placements. See the verdict.</p></div>
+    </div>
+    <div class="fsrc">The strength ratings are our judgement from the sources cited, not a published score.</div>
+  </figure>
+  <p>So the pilot must be judged on families, not on minutes saved. Measuring the second step, whether saved hours really turn into visits, is the first thing the evaluation has to do.</p>
+
+  <figure class="fig" aria-labelledby="f8t">
+    <h4 id="f8t">What the saved time could mean in Kazakhstan</h4>
+    <p class="fsub">Move the slider through the range UK councils reported.</p>
+    <div class="slider"><label for="save"><span>Admin time saved</span><span id="saveV">50%</span></label><input type="range" id="save" min="44" max="63" step="1" value="50"></div>
+    <div class="statrow">
+      <div><div class="n" id="hrsFreed">13.6</div><div class="l">hours freed per specialist each week</div></div>
+      <div><div class="n" id="visits">9</div><div class="l">extra 1.5-hour family visits a week, each</div></div>
+      <div><div class="n" id="fte">235</div><div class="l">full-time specialists' worth of time, across all 692</div></div>
+    </div>
+    <div class="fsrc">Our calculation. Assumes a 40-hour week with 68% on text-based work (Lillis et al., 2020, a UK estimate) and 1.5 hours per visit with travel. An illustration, not a forecast: Kazakh specialists' paperwork time is not measured.</div>
+  </figure>
+
+  <div class="obj">
+    <p class="q">Can a note-taking tool help when a family's problem is poverty, addiction or a parent in prison?</p>
+    <p class="who">An objection Moldir raised against her own project</p>
+    <p>Not by itself. The assistant only frees time, and time helps only where a family is struggling but could hold together with support. Some causes no visit can prevent: when a parent dies or goes to prison, the child still needs care, and the specialist's job becomes finding a good family home quickly. How Kazakhstan's cases split between these groups is not counted anywhere, which is one more gap in the data.</p>
+    <p>Worker time does matter. A review prepared for the Indiana legislature found a fair amount of evidence that lower caseloads for child-welfare workers are linked to better outcomes, including protection from abuse and more stable homes <span class="cite">(<a href="https://www.pewtrusts.org/-/media/assets/2019/01/in_caseload_reduction_for_family_case_managers_hb1006.pdf">Pew, 2019</a>)</span>. But a visit only helps if the specialist has somewhere to send the family. That is why the verdict adds a sixth condition.</p>
+  </div>
+  <figure class="fig" aria-labelledby="f11t">
+    <h4 id="f11t">What extra visits can and cannot reach</h4>
+    <p class="fsub">The same hour of a specialist's time, in three kinds of family crisis.</p>
+    <div class="reach">
+      <div style="--c:#8f652b"><b>Visits can help</b><p>A family under strain that could hold together: conflict after a divorce, debt, a parent's illness. Early contact, advice and help with paperwork for benefits.</p></div>
+      <div style="--c:#c9a46a"><b>Only if services exist</b><p>Addiction, mental illness, losing housing, violence at home. The specialist can refer the family, but only to treatment, shelters or support that exist in the district.</p></div>
+      <div style="--c:#6a5d50"><b>Visits cannot prevent</b><p>A parent dies or goes to prison, or the child is unsafe at home. Here the aim is a safe family placement quickly, not keeping the family together.</p></div>
+    </div>
+    <div class="fsrc">Our grouping, for illustration. Kazakhstan does not publish how many cases fall into each group.</div>
+  </figure>
+</div>
+</section>
+
+<!-- ============================ BILL ============================ -->
+<section class="chapter" id="bill" data-mood="morning" data-time="07:30">
+<div class="wrap">
+  <p class="chap">4. The AI-assisted solution: the bill</p>
+  <h2>What it would cost, and who pays</h2>
+  <p class="lede">Every solution comes with a bill. Here it is, heaviest cost first. Open a line to see the reasoning.</p>
+</div>
+<div class="wrap">
+  <div class="receipt">
+    <div class="rh"><b>CASE-NOTE ASSISTANT PILOT</b>Karaganda region · 12 months<br>Cost weight shown as ■</div>
+
+    <details>
+      <summary><span class="item">Data ethics</span><span class="wt">■■■■■</span><span class="one">Recording families when the person holding the phone can remove their child.</span></summary>
+      <div class="rb">
+        <p>The tool records families in their own homes, and the person holding the phone may later decide whether to remove their child. Under that imbalance, consent is a serious question, since recordings could become evidence against parents. Protection therefore has to be structural: recording only with a clear, refusable choice and no penalty for refusing; audio deleted once the note is signed; transcripts never used in court without a judge's order.</p>
+        <p>Whether families accept recording will depend less on the technology than on whether the process feels fair. Meers et al. (<a href="https://eprints.whiterose.ac.uk/id/eprint/233277/8/eswr-article-10.1332-27551768Y2025D000000067.pdf">2026</a>) find that public views of AI note-taking turn on privacy, feeling heard and transparency. Trials of AI scribes have also occasionally omitted information and recognised some accents less accurately, so every note must be checked by the specialist.</p>
+      </div>
+    </details>
+    <details>
+      <summary><span class="item">Labour</span><span class="wt">■■■■□</span><span class="one">Saved time can become prevention, or a reason not to hire.</span></summary>
+      <div class="rb"><p>With 692 specialists for 6.9 million children, and 688 posts still missing, the risk is that the government counts the tool as staff. "235 specialists' worth of time" could easily be read as "we no longer need to hire." Hidden labour moves too: someone must check and correct every transcript, and native speakers must label Kazakh and code-switched speech to train the model, the invisible work behind every AI system.</p></div>
+    </details>
+    <details>
+      <summary><span class="item">Politics and governance</span><span class="wt">■■■■□</span><span class="one">Who can open a family's file, and under which law.</span></summary>
+      <div class="rb">
+        <p>Kazakhstan's Law on Personal Data (No. 94-V, 2013) has required personal data to be stored inside the country since 1 January 2016 <span class="cite">(<a href="https://chambers.com/articles/problem-issues-of-personal-data-localization-in-kazakhstan">Chambers</a>)</span>, which rules out a foreign cloud tool such as Magic Notes as it stands. The Law on Artificial Intelligence (No. 230-VIII), in force since 18 January 2026, sorts AI systems into risk levels and leaves the classification to the system's owner <span class="cite">(<a href="https://www.ey.com/en_kz/technical/tax-alerts/2025/12/law-on-artificial-intelligence-kazakhstan">EY</a>)</span>. A tool that touches child-protection files should be classified as high-risk rather than left to self-assessment.</p>
+        <p>The sharpest risk is that a searchable archive of family conversations becomes attractive to police and other agencies. The answer is to make sure that archive never exists, and to lock what remains:</p>
+        <div class="layers">
+          <div><b>Don't keep the audio.</b> Deleted automatically once the note is signed. What cannot be searched cannot be misused.</div>
+          <div><b>Keep only what the case needs.</b> The note holds agreed actions and facts, not every word a parent said.</div>
+          <div><b>Purpose written into the rules.</b> Notes are for supporting the family; any police or court use needs a judge's order.</div>
+          <div><b>Every opening is logged.</b> An outside body, such as the Commissioner for Children's Rights, reviews the log and publishes how often records were opened and why.</div>
+          <div><b>Families see their own file.</b> Parents can read and correct the note about them, so the record is made with them, not about them.</div>
+        </div>
+        <p>Each layer answers one of the three conditions for fairness that Meers et al. identify: privacy, feeling heard and transparency.</p>
+      </div>
+    </details>
+    <details>
+      <summary><span class="item">Economic</span><span class="wt">■■■□□</span><span class="one">Not cheap, but small next to one child in an institution.</span></summary>
+      <div class="rb">
+        <p>UK councils show the price range: Middlesbrough's one-year contract was about £33,000 <span class="cite">(<a href="https://www.find-tender.service.gov.uk/Notice/052809-2025">Find a Tender</a>)</span>, North Northamptonshire's £48,000 <span class="cite">(<a href="https://www.find-tender.service.gov.uk/Notice/053743-2025">Find a Tender</a>)</span>, and Bristol's £75,000 <span class="cite">(<a href="https://bidsfactory.com/en/tenders/magic-notes-implementation-2026-uk_contracts_finder-b07654ddc5af9aac">Contracts Finder</a>)</span>. Priced the same way across Kazakhstan's 20 regions and cities of republican significance, that would be roughly £0.7–1.5 million a year (our calculation), a ceiling rather than a budget. Because of data localisation the tool must be built locally, so the main costs are development, Kazakh speech-model training, servers inside the country and staff training. Who profits depends on who builds it.</p>
+        <p>Against that, prevention is valuable: a 2013 study put one child in an orphanage at about 2.1 million tenge a year, against about 137,000 tenge under guardianship <span class="cite">(<a href="https://cabar.asia/?p=34090">CABAR, c. 2020</a>)</span>, roughly fifteen times cheaper. The tool does not need to be cheap to be worth it; it needs to keep a fairly small number of children out of institutions each year.</p>
+        <p>That argument has a danger in it. If savings become the goal, keeping children at home turns into a budget target, and a child could be left in an unsafe home to meet it. This is why the verdict rules out removal targets.</p>
+      </div>
+    </details>
+    <details>
+      <summary><span class="item">Environmental</span><span class="wt">■□□□□</span><span class="one">About the yearly electricity of two people, on a coal grid.</span></summary>
+      <div class="rb">
+        <p>Transcribing and summarising a visit is a small computing job. But Kazakhstan's electricity is still mostly coal: 62% of generation in 2025, from a coal fleet over 50 years old on average <span class="cite">(<a href="https://ember-energy.org/latest-insights/kazakhstan-has-the-wind-to-power-its-demand-growth">Ember</a>)</span>.</p>
+        <div class="envcalc">
+          <div class="slider"><label for="vis"><span>Recorded visits per specialist per week</span><span id="visV">10</span></label><input type="range" id="vis" min="2" max="20" step="1" value="10"></div>
+          <div class="statrow">
+            <div><div class="n" id="kwh">10,300</div><div class="l">kWh a year</div></div>
+            <div><div class="n" id="co2">6.2</div><div class="l">tonnes of CO₂ a year</div></div>
+            <div><div class="n" id="ppl">1.8</div><div class="l">people's yearly electricity in Kazakhstan</div></div>
+          </div>
+        </div>
+        <p class="cite">Our calculation: 692 specialists × visits × 1 hour × 46 weeks. Transcription 32.3 Wh per audio hour (Whisper large-v3, <a href="https://arxiv.org/abs/2404.17394">Janssens et al., 2024</a>); summary 0.05 Wh per note (<a href="https://arxiv.org/abs/2311.16863">Luccioni et al., 2024</a>); 604 g CO₂/kWh and 5,802 kWh per person (<a href="https://www.lowcarbonpower.org/region/Kazakhstan">Low-Carbon Power, Ember data, 2024</a>). Real-time use can be less efficient; up to three times these figures is possible.</p>
+      </div>
+    </details>
+
+    <div class="total"><span>TOTAL</span><span>Payable only under 6 conditions</span></div>
+    <div class="foot">See the verdict below</div>
+  </div>
+</div>
+</section>
+
+<!-- ============================ VERDICT ============================ -->
+<section class="chapter" id="verdict" data-mood="day" data-time="09:00">
+<div class="wide split" style="grid-template-columns:minmax(0,6fr) minmax(0,6fr)">
+  <div>
+    <p class="chap">The verdict</p>
+    <p class="vhead">Yes, for a pilot. Not yet for the country.</p>
+    <p>The case-note assistant is worth piloting because the shortage it addresses is real and measured in the state's own terms: 692 specialists for 6.9 million children, 688 short of the government's own standard. In the UK, AI scribes cut paperwork by 44–63%, and Kingston turned the savings into prevention services. But that evidence is self-reported, English-only and mostly from adult care, no study yet shows an AI scribe helping a family, and the tool records vulnerable families in their homes. So the answer is yes to a one-year pilot in Karaganda region, the region with the most children in institutions, and no to a national rollout until the pilot proves itself.</p>
+    <h3>Six conditions, each from the bill or an objection</h3>
+    <p class="hint">Untick one and watch the windows.</p>
+    <div class="conds" id="conds">
+      <label class="cond"><input type="checkbox" checked><div><small>From data ethics</small><b>Recording is truly optional</b><span>Families can refuse with no effect on their case; audio is deleted once the note is signed. Tested by refusal rates and an audit of deletion.</span></div></label>
+      <label class="cond"><input type="checkbox" checked><div><small>From labour</small><b>Saved hours go to prevention</b><span>Freed time is booked as protected visits, and the tool never replaces a hire toward the 1,380 posts. Tested by prevention visits before and after.</span></div></label>
+      <label class="cond"><input type="checkbox" checked><div><small>From governance</small><b>Built, stored and controlled in Kazakhstan</b><span>Classified high-risk, with the five safeguards against outside access. Tested by an annual published access report.</span></div></label>
+      <label class="cond"><input type="checkbox" checked><div><small>From the research on speech AI</small><b>Works as well for every family</b><span>Accuracy measured separately for Kazakh, Russian and code-switched speech, rural and urban. A pause if any group is clearly worse.</span></div></label>
+      <label class="cond"><input type="checkbox" checked><div><small>From the limits of the case studies</small><b>Evaluated independently, on child safety</b><span>By a university team, not the vendor or the ministry, against Kostanay region without the tool. It counts prevention visits, children entering care, repeat reports of abuse and children returned from new families, before any decision to expand.</span></div></label>
+      <label class="cond"><input type="checkbox" checked><div><small>From the objections</small><b>Families have somewhere to go</b><span>Before the pilot starts, each district lists the services specialists can refer families to: benefits, counselling, addiction treatment, shelters. Where there are none, the visits only watch a family struggle. Tested by referrals made and taken up.</span></div></label>
+    </div>
+  </div>
+  <div class="sticky" style="top:110px">
+    <div class="vstage">
+      <div class="blocks" id="dayBlocks"></div>
+      <div class="stamp" id="stamp" aria-live="polite">PILOT APPROVED<small>all six conditions hold</small></div>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="obj">
+    <p class="q">Does prevention push children to stay in homes that are bad for them?</p>
+    <p class="who">An objection Moldir raised against her own project</p>
+    <p>This is the most serious risk, and there is research on it. A large US evaluation of family preservation programmes found that placement in foster care did not go down, while child safety was maintained <span class="cite">(<a href="https://aspe.hhs.gov/hsp/evalfampres94/Final/index.htm">US HHS</a>)</span>. An earlier review found that most randomised studies showed no significant fall in placements <span class="cite">(<a href="https://core.ac.uk/download/423476818.pdf">Littell and Schuerman, 1995</a>)</span>. Later meta-analyses are more positive but limited: a reduction for individual children, not for whole families <span class="cite">(<a href="https://pubmed.ncbi.nlm.nih.gov/32018213/">Bezeczky et al., 2020</a>)</span>; an effect for families with many problems, but not where there was abuse or neglect <span class="cite">(<a href="https://doi.org/10.1016/j.childyouth.2012.04.002">Al et al., 2012</a>)</span>; and only a small effect on placement across 33 controlled studies <span class="cite">(<a href="https://doi.org/10.1016/j.chiabu.2024.107198">Lippens et al., 2025</a>)</span>.</p>
+    <p>So the danger lies less in the tool than in the target. If "fewer orphans" becomes the goal, specialists could feel pushed to leave children where they are. The pilot closes that door:</p>
+    <ul>
+      <li>The assistant never recommends keeping or removing a child. Specialists still remove children who are unsafe.</li>
+      <li>There are no removal targets. The pilot is never judged on fewer removals alone.</li>
+      <li>Earlier visits may find danger sooner, so a removal that happens earlier counts as a success, not a failure.</li>
+      <li>Child safety is measured alongside: repeat reports of abuse, and children returned from new families (condition 5).</li>
+    </ul>
+  </div>
+  <h3>The stop rule</h3>
+  <p>The pilot ends, and the verdict becomes no, if saved time is absorbed into more paperwork or used to justify fewer posts, if refusals affect families' cases, if any recording is accessed outside the rules, if a target for fewer removals is set, or if repeat reports of abuse rise in Karaganda compared with Kostanay.</p>
+  <h3>What the assistant cannot do</h3>
+  <p>It cannot replace the 688 missing specialists. At best it gives the existing 692 back some of their week. It cannot bring back a parent who has died or gone to prison, and it cannot create services a district does not have. The real cure for firefighting is people; this tool only buys them time. That is why the verdict is a pilot, not a solution.</p>
+
+</div>
+<div class="wide endmatter">
+  <div class="ai" id="transparency">
+    <h3>AI transparency statement</h3>
+    <p class="aiintro">This project was made by Moldir working with Claude (Anthropic) across the semester, in one project chat that is submitted as the AI Process Log. Here is what Claude contributed, what Moldir decided, what we rejected and why, and the mistakes we caught.</p>
+    <div class="aicols">
+      <div><h4>What Claude contributed</h4><ul>
+        <li>The first list of project ideas, then options within the themes Moldir proposed</li>
+        <li>Source searches, and a check that each source exists and says what we claim</li>
+        <li>First drafts of every section</li>
+        <li>A verification pass that found eight errors in the draft, listed below</li>
+        <li>The calculations marked "our calculation": staffing gap, saved time, regional rates, energy and CO₂</li>
+        <li>Research for and against Moldir's three objections, and first drafts of the answers</li>
+        <li>The design and code of this website</li></ul></div>
+      <div><h4>What Moldir decided</h4><ul>
+        <li>The themes: her hometown Karagandy, then gender and children, then foster care</li>
+        <li>The topic: she chose foster care over Karagandy's heating pipes after discussing both with Dina</li>
+        <li>The scope: prevention for struggling birth families, not finding children new homes</li>
+        <li>Brought in the documentary <em>There Are Many of Us</em></li>
+        <li>Rewrote the drafts, and demanded a firmer verdict and safeguards against police access</li>
+        <li>Found the statistics bureau's 2023 regional table herself, and questioned her own choice of Karagandy as the pilot until the data backed it</li>
+        <li>Raised the three objections to her own project that now shape the solution and verdict</li>
+        <li>Directed the design: a sombre start that warms slowly toward the verdict</li></ul></div>
+    </div>
+    <div class="aiwide">
+      <h4>What we rejected, and why</h4>
+      <ul>
+        <li><b>AI that matches children to adoptive families.</b> The evidence for matching tools is thin, and a placement decision is too serious to hand to an algorithm. We dropped the source on it too.</li>
+        <li><b>AI that predicts which children are at risk.</b> Research on screening tools shows they can treat poverty as risk. Our tool predicts and decides nothing about a child.</li>
+        <li><b>AI tutors for young children.</b> Moldir was not convinced that AI should teach small children.</li>
+        <li><b>The first verdict, "yes, but with some nuances".</b> Too vague to test. It became a pilot with six conditions and a stop rule.</li>
+        <li><b>The names "Time Back" and "The First Home".</b> The first described the mechanism, not the purpose; the second sounded like a housing project.</li>
+        <li><b>Claims we could not trace.</b> A claim about Magic Notes' accuracy for people with low verbal skills was replaced with a published limitation.</li>
+      </ul>
+      <h4>Mistakes we caught</h4>
+      <ul>
+        <li>The verification pass corrected eight errors in the draft, including "nearly 7 million" children (6.9 million), a staffing increase overstated as 2.5 times (2.3), and a figure attributed to the wrong outlet.</li>
+        <li>Claude suspected it had invented the authors of a 2024 speech study and removed their names. Checking the paper itself later showed the names were right, and they are restored. Both the error and the overcorrection are in the log.</li>
+      </ul>
+    </div>
+    <p class="ainote">Every number on this page was checked against its source; calculations we made ourselves are marked "our calculation." This statement was drafted by Claude from our project chat and checked by Moldir.</p>
+  </div>
+  <div class="sources">
+    <h3>Sources</h3>
+    <div class="sgrid"><div class="sgroup"><h4>Kazakhstan: problem and data</h4><ol start="1"><li>Balgabayev Doc (2026). <a href="https://www.youtube.com/watch?v=Vd_5k_UUtLo">There Are Many of Us</a> (documentary).</li><li>Mussabalinova, A. <a href="https://cabar.asia/en/the-present-and-future-of-social-orphans-in-kazakhstan">The present and future of social orphans in Kazakhstan</a>. CABAR.asia.</li><li>CABAR.asia (c. 2020). <a href="https://cabar.asia/?p=34090">Kazakhstan: end of the orphanage era?</a>, quoting A. Mussabalinova.</li><li>Bureau of National Statistics. <a href="https://bala.stat.gov.kz/category/sotsialnaya-zaschita-detej/">Social protection of children</a> (children in institutions by region, 2023).</li><li>Lada.kz (2024). <a href="https://www.lada.kz/kazakhstan-news/123857-v-kakikh-regionakh-kazakhstana-bolshe-vsego-detei.html">In which regions of Kazakhstan are there the most children</a> (statistics bureau data, 1 Jan 2024).</li><li>Bureau of National Statistics. <a href="https://bala.stat.gov.kz/en/dvizhenie-vospitannikov-organizatsij-dlya-detej-sirot-i-detej-ostavshihsya-bez-popecheniya-roditelej/">Children in organizations for orphans and children without parental care</a>; <a href="https://bala.stat.gov.kz/en/publications/">children portal</a>.</li><li>Tengrinews (2 June 2025). <a href="https://en.tengrinews.kz/kazakhstan_news/Nearly-7-million-children-live-in-Kazakhstan-268149/">Nearly 7 million children live in Kazakhstan</a>.</li><li>Bizmedia (1 Oct 2024). <a href="https://bizmedia.kz/2024-10-01-v-kazahstane-kolichestvo-detej-v-detskih-domah-silno-vyroslo">The number of children in children's homes has grown sharply</a>.</li><li>Inbusiness (4 Feb 2026). <a href="https://inbusiness.kz/ru/last/v-kazahstane-rezko-sokratilos-chislo-usynovlenij">The number of adoptions has fallen sharply</a> (statistics bureau data via Finprom).</li><li>NewTimes.kz (30 Mar 2026). <a href="https://newtimes.kz/obshchestvo/217663-neuplata-alimentov-i-nasilie-za-chto-lishaiut-roditelskikh-prav-v-kazakhstane">Unpaid alimony and violence: why parents lose parental rights</a>.</li></ol></div><div class="sgroup"><h4>Research</h4><ol start="11"><li>An, S. &amp; Kulmala, M. (2021). <a href="https://bettercarenetwork.org/library/social-welfare-systems/child-care-and-protection-system-reforms/global-deinstitutionalisation-policy-in-the-post-soviet-space-a-comparison-of-child-welfare-reforms">Global deinstitutionalisation policy in the post-Soviet space</a>. <em>Global Social Policy</em> 21(1).</li><li>Mussabalinova, A. <a href="https://sussex.figshare.com/articles/thesis/The_right_of_the_child_to_be_raised_in_the_family_reflections_on_decision-making_processes_in_child_placement_in_Kazakhstan_in_the_light_of_English_experience/23478863">The right of the child to be raised in the family</a>. PhD thesis, University of Sussex.</li><li>Chouldechova, A. et al. (2018). <a href="https://proceedings.mlr.press/v81/chouldechova18a.html">A case study of algorithm-assisted decision making in child maltreatment hotline screening decisions</a>. FAT* 2018.</li><li>De-Arteaga, M., Fogliato, R. &amp; Chouldechova, A. (2020). <a href="https://ar5iv.labs.arxiv.org/html/2002.08035">A case for humans-in-the-loop</a>. CHI 2020.</li><li>Eubanks, V. (2018). <em>Automating Inequality</em>. St. Martin's Press.</li><li>Broadhurst, K. et al. (2010). <a href="https://eprints.lancs.ac.uk/id/eprint/28235">Performing 'initial assessment'</a>. <em>British Journal of Social Work</em> 40(2), 352–370.</li><li>Lillis, T., Leedham, M. &amp; Twiner, A. (2020). Time, the written record, and professional practice: the case of contemporary social work. <em>Written Communication</em> 37(4), 431–486.</li><li>Meers, J., Leishman, E., Salter, I., Halliday, S. &amp; Tomlinson, J. (2026). <a href="https://eprints.whiterose.ac.uk/id/eprint/233277/8/eswr-article-10.1332-27551768Y2025D000000067.pdf">What do the public think about artificial intelligence note-taking tools in social care?</a> <em>European Social Work Research</em>.</li><li>Li, L., Wang, M. &amp; Jian, M. (2025). <a href="https://doi.org/10.1177/10497315251329531">Artificial intelligence-assisted case management in social work services: a systematic review</a>. <em>Research on Social Work Practice</em>.</li><li>Wilkins, D. &amp; Benett, V. (2025). <a href="https://orca.cardiff.ac.uk/id/eprint/178748/1/cfs.13304.pdf">Making accurate judgements in child welfare</a>. <em>Child &amp; Family Social Work</em>.</li><li>Koenecke, A. et al. (2020). <a href="https://econpapers.repec.org/RePEc:nas:journl:v:117:y:2020:p:7684-7689">Racial disparities in automated speech recognition</a>. <em>PNAS</em> 117(14).</li><li>Khassanov, Y. et al. (2021). <a href="https://arxiv.org/pdf/2009.10334">A crowdsourced open-source Kazakh speech corpus</a>. EACL 2021.</li><li>Mussakhojayeva, S., Khassanov, Y. &amp; Varol, H. A. <a href="https://issai.nu.edu.kz/ksc2/">KSC2: an industrial-scale open-source Kazakh speech corpus</a>. ISSAI.</li><li>Pew Charitable Trusts, Health Impact Project (2019). <a href="https://www.pewtrusts.org/-/media/assets/2019/01/in_caseload_reduction_for_family_case_managers_hb1006.pdf">Health impact note: caseload reduction for family case managers (Indiana HB 1006)</a>.</li><li>Westat, Chapin Hall and James Bell Associates, for US HHS (evaluation 1994–2002). <a href="https://aspe.hhs.gov/hsp/evalfampres94/Final/index.htm">Evaluation of Family Preservation and Reunification Programs: final report</a>.</li><li>Littell, J. H. &amp; Schuerman, J. R. (1995). <a href="https://core.ac.uk/download/423476818.pdf">A synthesis of research on family preservation and family reunification programs</a>. Report for US HHS.</li><li>Al, C. M. W., Stams, G. J. J. M. et al. (2012). <a href="https://doi.org/10.1016/j.childyouth.2012.04.002">A meta-analysis of intensive family preservation programs</a>. <em>Children and Youth Services Review</em> 34(8), 1472–1479.</li><li>Bezeczky, Z., El-Banna, A., Petrou, S., Kemp, A., Scourfield, J., Forrester, D. &amp; Nurmatov, U. B. (2020). <a href="https://pubmed.ncbi.nlm.nih.gov/32018213/">Intensive Family Preservation Services to prevent out-of-home placement of children</a>. <em>Child Abuse &amp; Neglect</em> 102, 104394.</li><li>Lippens, L., De Clercq, L., Vandevelde, S. &amp; De Pauw, S. (2025). <a href="https://doi.org/10.1016/j.chiabu.2024.107198">Evaluating the effectiveness of intensive family preservation services: a multi-level meta-analysis</a>. <em>Child Abuse &amp; Neglect</em>.</li></ol></div><div class="sgroup"><h4>Case studies and the bill</h4><ol start="30"><li>Workplace Journal (Sept 2025). <a href="https://workplacejournal.co.uk/2025/09/somerset-council-rolls-out-ai-to-cut-admin-for-social-workers/">Somerset Council rolls out AI to cut admin for social workers</a>.</li><li>Local Government Association. <a href="https://www.local.gov.uk/case-studies/kingston-council-using-ai-adult-social-care-administration">Kingston Council: using AI in adult social care administration</a>.</li><li>Around Ealing (2025). <a href="https://www.aroundealing.com/?p=173399">Ealing Council's use of AI in social care</a>.</li><li>Socitm. <a href="https://socitm.net/resource-hub/case-studies/ai-in-adult-social-care-swindon-borough-council/">Magic Notes for adult social care, Swindon Borough Council</a>.</li><li>St Helens Borough Council (26 Nov 2025). <a href="https://news.sthelens.gov.uk/article/14316/St-Helens-Borough-Council-rolls-out-innovative-AI-tool-to-450-frontline-staff">Council rolls out AI tool to 450 frontline staff</a>.</li><li>Community Care. <a href="https://www.communitycare.co.uk/?p=215389">AI tool improves direct work in adult social care despite accuracy concerns</a>.</li><li>Find a Tender: <a href="https://www.find-tender.service.gov.uk/Notice/052809-2025">Middlesbrough</a> and <a href="https://www.find-tender.service.gov.uk/Notice/053743-2025">North Northamptonshire</a> Magic Notes contracts (2025); Bristol City Council <a href="https://bidsfactory.com/en/tenders/magic-notes-implementation-2026-uk_contracts_finder-b07654ddc5af9aac">contract award</a> (Dec 2025).</li><li>Chambers. <a href="https://chambers.com/articles/problem-issues-of-personal-data-localization-in-kazakhstan">Problem issues of personal data localization in Kazakhstan</a>.</li><li>EY (Dec 2025). <a href="https://www.ey.com/en_kz/technical/tax-alerts/2025/12/law-on-artificial-intelligence-kazakhstan">Law on Artificial Intelligence, Kazakhstan</a>.</li><li>Ember (3 Nov 2026). <a href="https://ember-energy.org/latest-insights/kazakhstan-has-the-wind-to-power-its-demand-growth">Kazakhstan has the wind to power its demand growth</a>.</li><li>Low-Carbon Power. <a href="https://www.lowcarbonpower.org/region/Kazakhstan">Electricity in Kazakhstan in 2024</a> (Ember data).</li><li>Luccioni, A. S., Jernite, Y. &amp; Strubell, E. (2024). <a href="https://arxiv.org/abs/2311.16863">Power hungry processing</a>. ACM FAccT 2024.</li><li>Janssens, R., Verhelst, E., Abbo, G. A., Ren, Q., Pinto Bernal, M. J. &amp; Belpaeme, T. (2024). <a href="https://arxiv.org/abs/2404.17394">Child speech recognition in human-robot interaction: problem solved?</a> arXiv 2404.17394.</li></ol></div></div>
+  </div>
+</div>
+</section>
+
+<footer>Before Families Break, PLS 419/519, Nazarbayev University, fall 2026</footer>
+
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fmt = n => Math.round(n).toLocaleString('en-US');
+  const NS='http://www.w3.org/2000/svg';
+  const once=(el,fn,th=0.3)=>{const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fn(e.target);o.unobserve(e.target);}}),{threshold:th});o.observe(el);};
+
+  /* ---------- mood, nav ---------- */
+  const navLinks=[...document.querySelectorAll('nav.top a')];
+  const moodObs=new IntersectionObserver(es=>es.forEach(e=>{ if(!e.isIntersecting) return;
+    document.body.dataset.mood=e.target.dataset.mood;
+    const id=e.target.id; if(id) navLinks.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));
+  }),{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('header.hero,section.chapter').forEach(el=>moodObs.observe(el));
+
+  /* ---------- the panel blocks ---------- */
+  // 2 blocks × 9 columns × 12 rows = 216 windows, minus 2 doors = 214 windows ≈ 21,387 children.
+  function rng(seed){return()=>{seed=(seed*1664525+1013904223)%4294967296;return seed/4294967296;};}
+  function blocks(host, sky){
+    const W=600,H=440, svg=document.createElementNS(NS,'svg');
+    svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.setAttribute('role','img');
+    svg.setAttribute('aria-label','Two Soviet panel apartment blocks with 214 windows. 174 are lit: children living with relatives or foster parents. 37 are dark: children in institutions. 3 are grey: not specified.');
+    const g=sky==='night'?['#141a29','#2a3048']:['#f7d9a2','#fbefcf'];
+    svg.innerHTML=`<defs><linearGradient id="sky-${sky}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${g[0]}"/><stop offset="1" stop-color="${g[1]}"/></linearGradient></defs>
+      <rect width="${W}" height="${H}" rx="6" fill="url(#sky-${sky})"/>`;
+    if(sky==='night'){ const r=rng(7); for(let k=0;k<40;k++){const c=document.createElementNS(NS,'circle');c.setAttribute('cx',r()*W);c.setAttribute('cy',r()*70+6);c.setAttribute('r',r()*1.2+.4);c.setAttribute('fill','#e8e1d0');c.setAttribute('opacity',.35+r()*.5);svg.appendChild(c);}
+      svg.insertAdjacentHTML('beforeend','<circle cx="530" cy="52" r="20" fill="#efe6d0" opacity=".9"/><circle cx="539" cy="46" r="18" fill="#1a2033"/>'); }
+    else svg.insertAdjacentHTML('beforeend','<circle cx="70" cy="70" r="34" fill="#f2b85a" opacity=".85"/>');
+    const wins=[], cw=18,ch=19,gx=8,gy=9, bw=9*cw+10*gx, bh=12*ch+13*gy, top=H-bh-24;
+    [[40,0],[W-40-bw,1]].forEach(([bx,bi])=>{
+      svg.insertAdjacentHTML('beforeend',`<rect x="${bx}" y="${top}" width="${bw}" height="${bh}" fill="${sky==='night'?'#4b4640':'#a2968a'}"/>
+        <rect x="${bx-4}" y="${top-6}" width="${bw+8}" height="6" fill="${sky==='night'?'#3a3631':'#857a6e'}"/>`);
+      for(let row=0;row<12;row++){ // panel seams
+        svg.insertAdjacentHTML('beforeend',`<line x1="${bx}" x2="${bx+bw}" y1="${top+row*(ch+gy)}" y2="${top+row*(ch+gy)}" stroke="${sky==='night'?'#403b36':'#958a7e'}" stroke-width="1"/>`);}
+      for(let row=0;row<12;row++) for(let col=0;col<9;col++){
+        const x=bx+gx+col*(cw+gx), y=top+gy+row*(ch+gy);
+        if(row===11&&col===4){ svg.insertAdjacentHTML('beforeend',`<rect x="${x-2}" y="${y-4}" width="${cw+4}" height="${ch+13}" fill="${sky==='night'?'#2a2622':'#5e554c'}"/>`); continue; }
+        const w=document.createElementNS(NS,'rect'); w.setAttribute('x',x);w.setAttribute('y',y);w.setAttribute('width',cw);w.setAttribute('height',ch);w.setAttribute('rx',1.5);
+        w.setAttribute('fill','#2c3142'); w.style.transition='fill .6s'; svg.appendChild(w); wins.push(w);
+      }
+    });
+    svg.insertAdjacentHTML('beforeend',`<rect x="0" y="${H-24}" width="${W}" height="24" fill="${sky==='night'?'#151a26':'#cdb68f'}"/>`);
+    host.appendChild(svg);
+    // fixed scatter: which windows are institutions (37) and unspecified (3)
+    const r=rng(42), idx=wins.map((_,k)=>k); for(let k=idx.length-1;k>0;k--){const j=Math.floor(r()*(k+1));[idx[k],idx[j]]=[idx[j],idx[k]];}
+    const kind=new Array(wins.length).fill('lit'); idx.slice(0,37).forEach(k=>kind[k]='dark'); idx.slice(37,40).forEach(k=>kind[k]='grey');
+    const tones=['#f2c46b','#f6d590','#e9b04f'];
+    return {wins,kind,order:idx.slice(40),
+      light(frac,delay=true){ // frac: share of family windows lit
+        const n=Math.round(174*frac), lit=new Set(this.order.slice(0,n));
+        this.wins.forEach((w,k)=>{ const t=this.kind[k]==='dark'?'#2c3142':this.kind[k]==='grey'?'#77706a':(lit.has(k)?tones[k%3]:'#3a3a40');
+          w.style.transitionDelay=(delay&&!reduce)?(Math.random()*1800)+'ms':'0ms'; w.setAttribute('fill',t); });
+      }};
+  }
+  const hero=blocks(document.getElementById('heroBlocks'),'night');
+  setTimeout(()=>hero.light(1,true),reduce?0:400);
+  const day=blocks(document.getElementById('dayBlocks'),'day');
+  day.light(1,false);
+
+  /* ---------- toddlers ---------- */
+  const pic=(id,n,base)=>{const el=document.getElementById(id);for(let k=0;k<n;k++){const b=document.createElement('b');if(k>=base)b.className='new';el.appendChild(b);}};
+  pic('pic22',83,83); pic('pic23',128,83);
+
+  /* ---------- staffing band ---------- */
+  // One dot per 100 children a single specialist answers for; the first 50 (= the 1:5,000 standard) are lit.
+  const kids=document.getElementById('kids'); for(let k=0;k<230;k++){const b=document.createElement('b'); if(k<50) b.className='cov'; kids.appendChild(b);}
+  const KIDS=6900000;
+  const setStaff=s=>{ const per=KIDS/s, dots=Math.round(per/100);
+    document.getElementById('perSpec').textContent=fmt(per);
+    document.getElementById('gapSpec').textContent=fmt(Math.max(0,1380-s));
+    [...kids.children].forEach((b,k)=>{ b.style.display=k<dots?'':'none'; });
+  };
+  document.querySelectorAll('[data-staff]').forEach(btn=>btn.addEventListener('click',()=>{
+    document.querySelectorAll('[data-staff]').forEach(b=>b.setAttribute('aria-pressed','false')); btn.setAttribute('aria-pressed','true'); setStaff(+btn.dataset.staff); }));
+  setStaff(692);
+
+  /* ---------- line chart ---------- */
+  const yrs=[2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023];
+  const total=[3939,3893,4216,2943,1844,2737,2576,1900,1964,1963,2269];
+  const newly=[2558,2627,2598,1853,1166,1677,1502,1198,1145,1103,1567];
+  document.getElementById('lineTable').innerHTML='<tr><th>Year</th><th>All admissions</th><th>Newly identified</th></tr>'+yrs.map((y,k)=>`<tr><td>${y}</td><td>${fmt(total[k])}</td><td>${fmt(newly[k])}</td></tr>`).join('');
+  const host=document.getElementById('lineChart');
+  const W=640,H=300,m={l:46,r:16,t:16,b:30},iw=W-m.l-m.r,ih=H-m.t-m.b,ymax=4500;
+  const x=k=>m.l+k/(yrs.length-1)*iw, y=v=>m.t+ih-v/ymax*ih;
+  const path=a=>a.map((v,k)=>(k?'L':'M')+x(k).toFixed(1)+','+y(v).toFixed(1)).join('');
+  let gr=''; [0,1000,2000,3000,4000].forEach(v=>{gr+=`<g class="grid"><line x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}"/></g><g class="axis"><text x="${m.l-8}" y="${y(v)+4}" text-anchor="end">${v?fmt(v):'0'}</text></g>`;});
+  yrs.forEach((yy,k)=>{ if(k%2===0) gr+=`<g class="axis"><text x="${x(k)}" y="${H-8}" text-anchor="middle">${yy}</text></g>`; });
+  host.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Line chart of admissions 2013 to 2023; newly identified children rise from 1,103 in 2022 to 1,567 in 2023">${gr}
+    <path d="${path(total)}" fill="none" stroke="var(--s-guard)" stroke-width="2.2" stroke-linejoin="round" class="ln"/>
+    <path d="${path(newly)}" fill="none" stroke="var(--s-inst)" stroke-width="2.2" stroke-linejoin="round" class="ln"/>
+    <circle cx="${x(10)}" cy="${y(1567)}" r="5" fill="var(--s-inst)" stroke="#fbf7f0" stroke-width="2"/>
+    <text x="${x(10)-8}" y="${y(1567)+24}" text-anchor="end" style="font:600 13px var(--serif);fill:#2a211b">+42% in one year</text>
+    <line id="xh" x1="0" x2="0" y1="${m.t}" y2="${m.t+ih}" stroke="#2a211b" opacity="0"/>
+    <circle id="d1" r="5" fill="var(--s-guard)" stroke="#fbf7f0" stroke-width="2" opacity="0"/>
+    <circle id="d2" r="5" fill="var(--s-inst)" stroke="#fbf7f0" stroke-width="2" opacity="0"/>
+    <rect x="${m.l}" y="${m.t}" width="${iw}" height="${ih}" fill="transparent"/></svg><div class="tip"></div>`;
+  const s=host.querySelector('svg'),tip=host.querySelector('.tip'),xh=s.querySelector('#xh'),d1=s.querySelector('#d1'),d2=s.querySelector('#d2');
+  s.querySelectorAll('.ln').forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=reduce?0:L;});
+  once(host,()=>s.querySelectorAll('.ln').forEach(p=>{p.style.transition='stroke-dashoffset 2s ease';p.style.strokeDashoffset=0;}));
+  const move=ev=>{const r=s.getBoundingClientRect(),px=(ev.touches?ev.touches[0].clientX:ev.clientX)-r.left,sx=px/r.width*W;
+    const k=Math.max(0,Math.min(yrs.length-1,Math.round((sx-m.l)/iw*(yrs.length-1))));
+    xh.setAttribute('x1',x(k));xh.setAttribute('x2',x(k));xh.setAttribute('opacity',.25);
+    d1.setAttribute('cx',x(k));d1.setAttribute('cy',y(total[k]));d1.setAttribute('opacity',1);
+    d2.setAttribute('cx',x(k));d2.setAttribute('cy',y(newly[k]));d2.setAttribute('opacity',1);
+    tip.innerHTML=`<b>${yrs[k]}</b><br>All admissions: ${fmt(total[k])}<br>Newly identified: ${fmt(newly[k])}`;
+    const tx=x(k)/W*r.width; tip.style.left=(tx>r.width*.6?Math.max(0,tx-190):tx+14)+'px'; tip.style.top=(y(total[k])/H*r.height-10)+'px'; tip.style.opacity=1;};
+  s.addEventListener('mousemove',move); s.addEventListener('touchstart',move,{passive:true}); s.addEventListener('touchmove',move,{passive:true});
+  s.addEventListener('mouseleave',()=>{tip.style.opacity=0;[xh,d1,d2].forEach(e=>e.setAttribute('opacity',0));});
+
+  /* ---------- bars ---------- */
+  document.querySelectorAll('.fig').forEach(f=>{const bs=f.querySelectorAll('.hbar .b span'); if(bs.length) once(f,()=>bs.forEach(b=>b.style.width=b.dataset.w+'%'));});
+
+  /* ---------- redactions ---------- */
+  document.querySelectorAll('.redact').forEach(r=>{const open=()=>r.classList.add('open'); r.addEventListener('click',open); r.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});});
+
+  /* ---------- research crossroads ---------- */
+  const R={
+    gap:{t:'The gap this project speaks to',b:"Research on Kazakhstan's reforms says prevention is missing because social workers are missing. Research on AI in social work says scribes save time, but mostly vendors and councils have measured it, and only in English. Nobody has asked whether a Kazakh–Russian AI scribe could turn saved time into prevention in a post-Soviet system, or what it would cost the families being recorded.",dl:[]},
+    A:{t:'Reform on paper, Soviet practice underneath',b:'An and Kulmala (<a href="https://bettercarenetwork.org/library/social-welfare-systems/child-care-and-protection-system-reforms/global-deinstitutionalisation-policy-in-the-post-soviet-space-a-comparison-of-child-welfare-reforms"><em>Global Social Policy</em>, 2021</a>) compare how the global policy of closing institutions travelled to Russia and Kazakhstan: fast and sweeping in Russia, incremental in Kazakhstan. Mussabalinova\'s <a href="https://sussex.figshare.com/articles/thesis/The_right_of_the_child_to_be_raised_in_the_family_reflections_on_decision-making_processes_in_child_placement_in_Kazakhstan_in_the_light_of_English_experience/23478863">Sussex PhD thesis</a> finds laws changed, but institutions, attitudes and placement practice stayed close to the Soviet period.',dl:[['Known','Children in institutions are falling.'],['Contested','Whether that reflects prevention or relabelling of care.'],['Gap','Almost no study of the front line where families are, or are not, supported.'],['Also contested','Abroad, family-support programmes have often failed to reduce placements in controlled trials. The verdict takes this up.']]},
+    B:{t:'Algorithms: prediction, bias and the human in the loop',b:'Chouldechova et al. (<a href="https://proceedings.mlr.press/v81/chouldechova18a.html">FAT* 2018</a>) built and audited the Allegheny Family Screening Tool and warned that families in poverty can be disadvantaged by reliance on government data. De-Arteaga, Fogliato and Chouldechova (<a href="https://ar5iv.labs.arxiv.org/html/2002.08035">CHI 2020</a>) show how workers behaved when scores were wrong, and that evidence is mixed on whether such tools improve decisions. Eubanks\'s <em>Automating Inequality</em> (2018) gives the critical account.',dl:[['Known','Prediction in child welfare can encode poverty as risk.'],['We take','Our tool must never predict or decide anything about a child.']]},
+    C:{t:'Paperwork: why time is the scarce resource',b:'Broadhurst et al. (<a href="https://eprints.lancs.ac.uk/id/eprint/28235"><em>British Journal of Social Work</em>, 2010</a>) found IT systems and audit demands meant to increase safety pushed workers into shortcuts. Lillis, Leedham and Twiner (2020) estimate at least 68% of social workers\' time goes on text-based work, as cited by <a href="https://eprints.whiterose.ac.uk/id/eprint/233277/8/eswr-article-10.1332-27551768Y2025D000000067.pdf">Meers et al. (2026)</a>. A systematic review by Li, Wang and Jian (2025) found only eight empirical studies of AI-assisted case management worldwide. Wilkins and Benett (<a href="https://orca.cardiff.ac.uk/id/eprint/178748/1/cfs.13304.pdf">2025</a>) compared ChatGPT with 581 child and family social workers and stress its limits with complex human needs.',dl:[['Known','Paperwork crowds out direct work.'],['Contested','Whether AI scribes return that time to families.'],['Gap','No independent outcome studies; most evidence comes from vendors and councils.']]},
+    D:{t:'Voice: whose speech does AI hear?',b:'Koenecke et al. (<a href="https://econpapers.repec.org/RePEc:nas:journl:v:117:y:2020:p:7684-7689"><em>PNAS</em>, 2020</a>) found five commercial systems averaged a word error rate of 0.35 for Black speakers against 0.19 for white speakers. For Kazakh, ISSAI at Nazarbayev University built the open Kazakh Speech Corpus, about 332 hours (<a href="https://arxiv.org/pdf/2009.10334">Khassanov et al., 2021</a>), and later <a href="https://issai.nu.edu.kz/ksc2/">KSC2</a>, over a thousand hours including Kazakh–Russian code-switching.',dl:[['Known','Transcription accuracy is unequal across speakers.'],['Gap','Nobody has tested it on stressed, informal, code-switched conversation in poor households, which is what a home visit sounds like.']]}
+  };
+  const venn=document.getElementById('venn'), panel=document.getElementById('rpanel');
+  const C=[['A','Reform',170,170,'#c08a3e'],['B','Algorithms',330,170,'#5b7fd0'],['C','Paperwork',170,330,'#3aa37c'],['D','Voice',330,330,'#c4574a']];
+  venn.innerHTML=`<svg viewBox="0 0 500 500" role="group" aria-label="Four research areas overlapping around a gap">${C.map(([k,l,cx,cy,c])=>`
+    <circle class="c" data-k="${k}" tabindex="0" role="button" aria-label="${l}" cx="${cx}" cy="${cy}" r="135" fill="${c}" fill-opacity=".38" stroke="${c}" stroke-width="1.5"/>`).join('')}
+    ${C.map(([k,l,cx,cy])=>`<text x="${cx+(cx<250?-40:40)}" y="${cy+(cy<250?-40:50)}" text-anchor="middle" font-size="19" font-weight="500" fill="currentColor">${l}</text>`).join('')}
+    <circle class="c on" data-k="gap" tabindex="0" role="button" aria-label="The gap" cx="250" cy="250" r="46" fill="#fbf7f0" fill-opacity="1" stroke="#2a211b" stroke-dasharray="4 4"/>
+    <text x="250" y="246" text-anchor="middle" font-size="14" fill="#2a211b">the</text><text x="250" y="264" text-anchor="middle" font-size="14" font-weight="700" fill="#2a211b">gap</text></svg>`;
+  const show=k=>{const d=R[k]; panel.innerHTML=`<h4>${d.t}</h4><p>${d.b}</p>${d.dl.length?'<dl>'+d.dl.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('')+'</dl>':''}`;
+    venn.querySelectorAll('.c').forEach(c=>c.classList.toggle('on',c.dataset.k===k)); };
+  venn.querySelectorAll('.c').forEach(c=>{c.addEventListener('click',()=>show(c.dataset.k)); c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show(c.dataset.k);}});});
+  show('gap');
+
+  /* ---------- visit journey ---------- */
+  const ic={
+    ask:'<circle cx="19" cy="13" r="6" fill="none" stroke="#2a211b" stroke-width="2"/><path d="M8 32c2-7 20-7 22 0" fill="none" stroke="#2a211b" stroke-width="2"/><path d="M27 6l4 4 6-7" fill="none" stroke="#2f8f6a" stroke-width="2.4"/>',
+    rec:'<rect x="11" y="4" width="16" height="30" rx="3" fill="none" stroke="#2a211b" stroke-width="2"/><circle cx="19" cy="19" r="4" fill="#8e2f2a"/>',
+    text:'<path d="M6 12h4M12 8v8M16 5v14M20 9v6M24 6v12M28 10v4" stroke="#2a211b" stroke-width="2"/><path d="M8 26h22M8 31h15" stroke="#8f652b" stroke-width="2"/>',
+    sign:'<path d="M7 31c5-1 6-9 10-9s1 8 5 8 5-6 9-6" fill="none" stroke="#2a211b" stroke-width="2"/><path d="M24 6l7 7-11 11h-7v-7z" fill="none" stroke="#2a211b" stroke-width="2"/>',
+    del:'<path d="M9 10h20M15 10V6h8v4M11 10l2 22h12l2-22" fill="none" stroke="#2a211b" stroke-width="2"/><path d="M16 15v12M22 15v12" stroke="#8e2f2a" stroke-width="2"/>',
+    cal:'<rect x="6" y="8" width="26" height="24" rx="2" fill="none" stroke="#2a211b" stroke-width="2"/><path d="M6 15h26M12 4v7M26 4v7" stroke="#2a211b" stroke-width="2"/><path d="M12 22l4 4 8-8" fill="none" stroke="#8f652b" stroke-width="2.4"/>',
+    home:'<path d="M5 18L19 6l14 12" fill="none" stroke="#2a211b" stroke-width="2"/><path d="M9 16v16h20V16" fill="none" stroke="#2a211b" stroke-width="2"/><rect x="16" y="22" width="6" height="10" fill="#f2c46b"/>',
+    no:'<circle cx="19" cy="19" r="14" fill="none" stroke="#8e2f2a" stroke-width="2.4"/><path d="M9 29L29 9" stroke="#8e2f2a" stroke-width="2.4"/><text x="19" y="23" text-anchor="middle" font-size="10" font-family="sans-serif" fill="#2a211b">score</text>'
+  };
+  const steps=[['ask','Family chooses','The family agrees to recording, or refuses. Refusing changes nothing.',''],['rec','Visit is recorded','On a work phone, during the home visit.',''],['text','AI drafts','Transcribes Kazakh, Russian or both, and drafts the case note.',''],['sign','Specialist signs','Corrects and signs. Nothing is filed unsigned.','hl'],['del','Audio deleted','Once the note is signed, the recording is gone.',''],['cal','System pre-filled','Agreed actions and deadlines go into the case system.',''],['home','Time goes back','Saved hours are booked as protected prevention visits.','hl'],['no','Never','The AI never scores, predicts or recommends anything about a child.','no']];
+  document.getElementById('journey').innerHTML=steps.map(([i,b,t,c])=>`<div class="st ${c}"><svg viewBox="0 0 38 38" aria-hidden="true">${ic[i]}</svg><b>${b}</b>${t}</div>`).join('');
+
+
+  /* ---------- region ranking ---------- */
+  const regs=[['North Kazakhstan',207,126424],['Kostanay',321,206584,'comp'],['Karaganda',461,317101,'pilot'],['Mangystau + Pavlodar',520,534643],['Zhetysu',195,245056],['Ulytau',54,75506],['West Kazakhstan',141,217427],['Kyzylorda',214,335399],['Almaty city',398,665430],['Atyrau',124,274688],['Shymkent',189,497081],['Zhambyl',172,465492],['Aktobe',106,330877],['Turkestan',191,927107],['Astana',94,472070],['Almaty region',47,556114]];
+  const rg=document.getElementById('regions'), rmax=17;
+  rg.innerHTML=regs.map(([n,i,k,c])=>{const r=i/k*10000;return `<div class="rrow ${c||''}" tabindex="0" data-t="${n}: ${fmt(i)} children in institutions out of ${fmt(k)} children"><span>${n}</span><div class="rb"><span data-w="${(r/rmax*100).toFixed(1)}"></span></div><span class="rv">${r.toFixed(1)}</span></div>`;}).join('')+'<div class="rtip" aria-live="polite">&nbsp;</div>';
+  const rtip=rg.querySelector('.rtip');
+  rg.querySelectorAll('.rrow').forEach(row=>{const sh=()=>rtip.textContent=row.dataset.t; row.addEventListener('mouseenter',sh); row.addEventListener('focus',sh); row.addEventListener('click',sh);});
+  once(rg,()=>rg.querySelectorAll('.rb span').forEach(b=>b.style.width=b.dataset.w+'%'));
+  document.getElementById('regTable').innerHTML='<tr><th>Region</th><th>In institutions</th><th>Children</th><th>Per 10,000</th></tr>'+regs.map(([n,i,k])=>`<tr><td>${n}</td><td>${fmt(i)}</td><td>${fmt(k)}</td><td>${(i/k*10000).toFixed(1)}</td></tr>`).join('');
+
+  /* ---------- calculators ---------- */
+  const save=document.getElementById('save');
+  const upd=()=>{const p=+save.value/100,h=40*0.68*p; document.getElementById('saveV').textContent=save.value+'%';
+    document.getElementById('hrsFreed').textContent=h.toFixed(1); document.getElementById('visits').textContent=Math.floor(h/1.5);
+    document.getElementById('fte').textContent=fmt(692*h/40);};
+  save.addEventListener('input',upd); upd();
+  const vis=document.getElementById('vis');
+  const env=()=>{const v=+vis.value,hrs=692*v*46,kwh=hrs*0.0323+hrs*0.00005; document.getElementById('visV').textContent=v;
+    document.getElementById('kwh').textContent=fmt(Math.round(kwh/100)*100); document.getElementById('co2').textContent=(kwh*0.604/1000).toFixed(1);
+    document.getElementById('ppl').textContent=(kwh/5802).toFixed(1);};
+  vis.addEventListener('input',env); env();
+
+  /* ---------- verdict ---------- */
+  const boxes=[...document.querySelectorAll('#conds input')], stamp=document.getElementById('stamp');
+  const verdict=()=>{const met=boxes.filter(b=>b.checked).length;
+    boxes.forEach(b=>b.closest('.cond').classList.toggle('off',!b.checked));
+    day.light(met/boxes.length,true);
+    const ok=met===boxes.length, fail=boxes.length-met;
+    stamp.className='stamp'+(ok?'':' no'); void stamp.offsetWidth; stamp.classList.add('hit');
+    stamp.innerHTML=ok?'PILOT APPROVED<small>all six conditions hold</small>':`VERDICT: NO<small>${fail} condition${fail>1?'s':''} failed: the lights go out</small>`;};
+  boxes.forEach(b=>b.addEventListener('change',verdict));
+})();
+</script>
+</body>
+</html>
